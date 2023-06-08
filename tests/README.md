@@ -1,1 +1,1 @@
-# playwright tests wrote in vs code
+# playwright tests wrote in vs code and uploaded to github
