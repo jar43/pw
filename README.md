@@ -1,3 +1,3 @@
-# playwright tests
+# playwright
 # vs code
 # github
