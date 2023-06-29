@@ -6,6 +6,9 @@ test('registracia – uspesna', async ({ page }) => {
   // klikni na 'Create an Account'
   await page.getByRole('link', { name: 'Create an Account' }).click();
 
+  // skontroluj ci stranka ma url https://magento.softwaretestingboard.com/customer/account/create/
+  await expect(page).toHaveURL('https://magento.softwaretestingboard.com/customer/account/create/');
+
   // vypln polia 'First Name' a 'Last Name' lubovolnym textom
   await page.getByLabel('First Name').click();
   await page.getByLabel('First Name').fill('Jaro');
@@ -13,9 +16,20 @@ test('registracia – uspesna', async ({ page }) => {
   await page.getByLabel('Last Name').fill('Ma');
   await page.getByLabel('Last Name').press('Tab');
 
+  // skontroluj ci polia 'First Name' a 'Last Name' obsahuju lubovolny text
+  await expect.soft(page.getByLabel('First Name')).toHaveText('');
+  await expect.soft(page.getByLabel('Last Name')).toHaveText('');
+
   // vypln pole 'Email' lubovolnou emailovou adresou
   await page.getByLabel('Email', { exact: true }).fill('saxmood@gmail.com');
   await page.getByLabel('Email', { exact: true }).press('Tab');
+
+  // skontroluj ci pole 'Email' obsahuje lubovolnu emailovu adresu
+  await expect(page.getByLabel('Email', { exact: true })).toContainText('')
+
+  // skontroluj ci polia 'Password' a 'Confirm Password' su editovatelne
+  await expect.soft(page.getByRole('textbox', { name: 'Password*', exact: true })).toBeEditable();
+  await expect.soft(page.getByLabel('Confirm Password')).toBeEditable();
 
   // vypln polia 'Password' a 'Confirm Password' tak, aby pocet znakov bol minimalne 8 a obsahovalo specialny znak a cislo
   await page.getByRole('textbox', { name: 'Password*', exact: true }).fill('training.1');
