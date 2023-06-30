@@ -14,7 +14,7 @@ test('prihlasenie – neuspesne', async ({ page }) => {
 
   // zobrazenie upozornenia 'Please enter as valid email address (Ex: johndoe@domain.com).'
 
-  // zadaj spravny prihlasovaci udaj vytvoreneho uctu pre email a nespravny pre heslo
+  // zadaj spravny prihlasovaci udaj vytvoreneho uctu pre email a nespravny pre heslo.
   await page.getByLabel('Email', { exact: true }).click();
   await page.getByLabel('Email', { exact: true }).fill('saxmood@gmail.com');
   await page.getByLabel('Email', { exact: true }).press('Tab');

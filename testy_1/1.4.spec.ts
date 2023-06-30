@@ -12,5 +12,5 @@ test('prihlasenie – uspesne', async ({ page }) => {
   await page.getByLabel('Email', { exact: true }).press('Tab');
   await page.getByLabel('Password').fill('training.1');
 
-  // uspesne prihlasenie do uctu
+  // uspesne prihlasenie do uctu.
 });
