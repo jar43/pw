@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('prihlasenie – uspesne', async ({ page }) => {
+test('prihlasenie – neuspesne', async ({ page }) => {
   await page.goto('https://magento.softwaretestingboard.com/training.html');
 
   // klikni na 'Sign in'
