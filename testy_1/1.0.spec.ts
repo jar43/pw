@@ -21,7 +21,7 @@ test.describe('registracia a prihlasenie - uspesne', () => {
     await page.getByLabel('Last Name').press('Tab');
 
     // skontroluj ci polia 'First Name' a 'Last Name' obsahuju lubovolny text
-    await expect.soft(page.getByLabel('First Name')).toHaveText('');
+    await expect.soft(page.getByTestId('firstname')).toHaveText('');
     await expect.soft(page.getByLabel('Last Name')).toHaveText('');
 
     // vypln pole 'Email' lubovolnou emailovou adresou
@@ -29,7 +29,7 @@ test.describe('registracia a prihlasenie - uspesne', () => {
     await page.getByLabel('Email', { exact: true }).press('Tab');
 
     // skontroluj ci pole 'Email' obsahuje lubovolnu emailovu adresu
-    await expect.soft(page.getByLabel('Email', { exact: true })).toContainText('')
+    await expect.soft(page.getByTestId('email_address')).toContainText('@')
 
     // skontroluj ci polia 'Password' a 'Confirm Password' su editovatelne
     await expect.soft(page.getByRole('textbox', { name: 'Password*', exact: true })).toBeEditable();

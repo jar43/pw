@@ -11,5 +11,7 @@ test('prihlasenie na odber – neuspesne', async ({ page }) => {
   await page.getByRole('button', { name: 'Subscribe' }).click();
 
   // po neuspesnom prihlaseni sa zobrazi text 'Please enter a valid email address (Ex: johndoe@domain.com).'
-  await page.getByText('Please enter a valid email address (Ex: johndoe@domain.com).').click();
+  await expect(page.getByTestId('newsletter-error')).toBeVisible;
+  await expect(page.getByTestId('newsletter-error')).toHaveText('Please enter a valid email address (Ex: johndoe@domain.com).');
+
 });
