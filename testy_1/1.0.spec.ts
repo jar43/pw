@@ -21,7 +21,8 @@ test.describe('registracia a prihlasenie - uspesne', () => {
     await page.getByLabel('Last Name').press('Tab');
 
     // skontroluj ci polia 'First Name' a 'Last Name' obsahuju lubovolny text
-    await expect.soft(page.getByTestId('firstname')).toHaveText('');
+    const firstname = page.getByTestId('firstname')
+    await expect.soft(firstname).toHaveText('');
     await expect.soft(page.getByLabel('Last Name')).toHaveText('');
 
     // vypln pole 'Email' lubovolnou emailovou adresou
@@ -46,7 +47,6 @@ test.describe('registracia a prihlasenie - uspesne', () => {
 
 
   test('prihlasenie – uspesne', async ({ page }) => {
-    await page.goto('https://magento.softwaretestingboard.com/training.html');
   
     // klikni na 'Sign in'
     await page.getByRole('link', { name: 'Sign In' }).click();
