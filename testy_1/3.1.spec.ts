@@ -14,7 +14,7 @@ test('prihlasenie na odber – uspesne', async ({ page }) => {
   await page.getByRole('button', { name: 'Subscribe' }).click();
 
   // po uspesnom prihlaseni sa zobrazi text 'Thank you for your subscription.'
-  await expect.soft(page.locator('class=page messages')).toBeVisible();
-  await expect.soft(page.getByPlaceholder('class=page messages')).toHaveText('');
+  await expect.soft(page.locator('.page.messages')).toBeVisible();
+  await expect.soft(page.getByRole('alert').locator('div').first()).toContainText('');
 
 });
