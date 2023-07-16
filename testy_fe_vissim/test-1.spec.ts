@@ -6,11 +6,17 @@ test.beforeEach(async ({ page }) => {
 
 test.describe('filtrovanie ponuk', () => {
 
-  test('location', async ({ page }) => {
-    await page.getByRole('link', { name: 'Join us' }).click();
-    await page.getByRole('link', { name: 'See available positions' }).click();
-    await page.locator('#yui_3_17_2_1_1689503491914_1497').click();
-    await page.getByRole('link', { name: 'Kosice', exact: true }).click();
+  test('location - Kosice', async ({ page }) => {
+    // vytvorenie noveho lokatora
+    const role = page.locator('#yui_3_17_2_1_1689503491914_1497');
+    const Kosice = page.locator('#yui_3_17_2_1_1689540127954_1558');
+    // vyber filter >location>Kosice
+    await role.click();
+    await Kosice.click();
+    // skontroluj, ci pole filtra 'LOCATION' ma text ' LOCATION:Kosice'
+    await expect(page.locator('#yui_3_17_2_1_1689540141171_1528')).toHaveText('LOCATION:Kosice');
+    // skontroluj, ci vsetky vyfiltrovane pozicie obsahuju text 'Kosice'
+    await expect(page.locator('#yui_3_17_2_1_1689540141171_88')).toContainText('Kosice');
   });
 
   test('type of listing', async ({ page }) => {
