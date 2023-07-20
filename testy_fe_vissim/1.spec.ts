@@ -1,21 +1,20 @@
 import { test, expect } from '@playwright/test';
 
-test.beforeEach(async ({ page }) => {
-  await page.goto('https://www.vissim.no/career#1');
-});
-
 /**
  * pouzite skratky:
  * PAP = polozka zo sekcie 'Avalaible Positions'
  */
 
 test.describe('filtrovanie poloziek ', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto('https://www.vissim.no/career#1');
+  });
 
-  test('location - Kosice', async ({ page }) => {
+  test('location', async ({ page }) => {
 
     // skontroluj, ze existuje vo filtri PAP polozka >location>Kosice
     const location_items = page.locator('#yui_3_17_2_1_1689842969548_785');
-    await expect.soft(page.location_items).toHaveText('Kosice');
+    await expect.soft(location_items).toHaveText('Kosice');
 
     // vyber filter >location>Kosice
     const role = page.locator('#yui_3_17_2_1_1689503491914_1497');
@@ -25,24 +24,26 @@ test.describe('filtrovanie poloziek ', () => {
 
     // skontroluj, ci pole filtra 'LOCATION' ma text 'LOCATION:Kosice'
     const location = page.locator('#yui_3_17_2_1_1689540141171_1528');
-    await expect.soft(page.location).toHaveText('LOCATION:Kosice');
+    await expect.soft(location).toHaveText('LOCATION:Kosice');
 
     // skontroluj, ci vsetky vyfiltrovane PAP maju v nazve slovo 'Kosice'
     const pap = page.locator('#yui_3_17_2_1_1689540141171_88');
-    await expect.soft(page.pap).toContainText('Kosice');
+    await expect.soft(pap).toContainText('Kosice');
   });
 
   test('type of listing', async ({ page }) => {
 
     // skontroluj, ci default hodnota filtra 'type of listing' je 'All'
     const type_of_listing = page.locator('#yui_3_17_2_1_1689842969548_1712');
-    await expect(type_of_listing).toHaveValues([':All']);
+    await expect.soft(type_of_listing).toHaveValues([':All']);
 
     // z filtra 'type of listing' vyber moznost 'kosice'
     await page.locator('#yui_3_17_2_1_1689503491914_1501').click();
     await page.getByRole('link', { name: 'kosice' }).click();
 
     // skontroluj, ci vysledkom vyhladavania je zobrazenie PAP
+    const pap = page.locator('#yui_3_17_2_1_1689540141171_88');
+    await expect(pap).toHaveClass('slide-custom-link row');
 
   });
 
