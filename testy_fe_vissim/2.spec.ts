@@ -16,6 +16,7 @@ test.describe('otvorenie PAP', () => {
     await page.locator('#yui_3_17_2_1_1689577297058_953').click();
 
     // skontroluj, ci vsetky PAP po prejdeni kurzorom rozroluju detailne info
+    
 
     // skontroluj, ci sa vsetky PAP otvoria klikom na tlacidlo 'Read More'
 
