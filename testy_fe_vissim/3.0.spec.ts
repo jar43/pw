@@ -19,6 +19,7 @@ test.describe('Open Application', () => {
     const type_of_listing_items = page.locator('#yui_3_17_2_1_1689885793641_1586');
     await expect(type_of_listing_items).toContainText('open application')
     await page.getByRole('link', { name: 'open application', exact: true }).click();
+    await page.goBack();
 
     // skontroluj, ci po pouziti filtra 'TYPE OF LISTING' a vybere 'open application' sa zobrazi iba PAP 'Open Application'
     await page.locator('#yui_3_17_2_1_1689714840287_1620').click();
@@ -50,18 +51,7 @@ test.describe('Open Application', () => {
 
   });
 
-  test('Open Application - formular', async ({ page }) => {
-
-    await page.goto('https://jobs.datacruit.com/en/reaction/open-application-vissim-no-172275?live=1&share_id=7321C4CB');
-
-    // skontroluj, ci formular funguje..
-    // - polia su prazdne, editovatelne, klikatelne
-    // - povinne polia pri chybnom vyplneni zobrazia chybu, text
-
-    // ma funkcnu moznost 'Upload your CV'
-    const cv = page.getByText('Select a file');
-    await expect(cv).toBeEditable();
-
-
-  });
+  /**
+   * pokracovanie v subore 3.1.spec.ts => Open Application - formular
+   */
 });
