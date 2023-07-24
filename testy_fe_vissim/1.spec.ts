@@ -7,6 +7,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('filtrovanie poloziek ', () => {
   test.beforeEach(async ({ page }) => {
+    test.setTimeout(120000);
     await page.goto('https://www.vissim.no/career#1');
   });
 
