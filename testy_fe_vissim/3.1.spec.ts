@@ -48,12 +48,12 @@ test.describe('Open Application - formular', () => {
     await expect(message).toHaveValue('Volam sa Jozko Mrkvicka');
 
     // skontroluj, ci sa textove polia daju vymazat
-    await name.clear;
-    await surname.clear;
-    await email.clear;
-    await phone.clear;
-    await linkedin.clear;
-    await message.clear;
+    await name.clear();
+    await surname.clear();
+    await email.clear();
+    await phone.clear();
+    await linkedin.clear();
+    await message.clear();
 
     await expect(name).toHaveValue('');
     await expect(surname).toHaveValue('');
