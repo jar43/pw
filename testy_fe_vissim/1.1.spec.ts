@@ -15,7 +15,7 @@ test.describe('filtrovanie poloziek ', () => {
 
     // vyber hodnotu filtra - location
     const hrefFilterValue = '/available-positions-1?location=Kosice'; // nahrad vybranou hodnotou filtra
-    const filterValue = await page.waitForSelector('a[href="${hrefKosice}"]', {state: 'visible'});
+    const filterValue = await page.waitForSelector('a[href="${hrefFilterValue}"]', {state: 'visible'});
     await filterValue.click();
 
     // skontroluj, ci titulok vyfiltrovanej PAP obsahuje nazov vybranej hodnoty filtra
