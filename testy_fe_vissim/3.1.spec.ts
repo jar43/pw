@@ -103,7 +103,7 @@ test.describe('Open Application - formular', () => {
     // zaskrtni pole 'I agree to processing of personal data.'
     const agreement = page.locator('i');
     await expect(agreement).toBeEnabled();
-    await agreement.click();
+    await agreement.check();
 
     // skontroluj, ci je pole zaskrtnute
     await expect(agreement).toBeChecked();
